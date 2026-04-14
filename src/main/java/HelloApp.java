@@ -3,18 +3,17 @@ public class HelloApp {
         if (args.length == 0) {
             System.out.println("Hello, World!");
         } else {
-            // StringBuilder is efficient for joining many strings
-            StringBuilder names = new StringBuilder();
+            StringBuilder nameBuilder = new StringBuilder();
             
-            for (int i = 0; i < args.length; i++) {
-                names.append(args[i]);
-                // Add a comma and space only if it's NOT the last name
-                if (i < args.length - 1) {
-                    names.append(", ");
-                }
+            // Enhanced For-Loop: Always add name + comma + space
+            for (String name : args) {
+                nameBuilder.append(name).append(", ");
             }
             
-            System.out.println("Hello, " + names.toString() + "!");
+            // Clean up: Remove the very last ", " (last 2 characters)
+            String finalNames = nameBuilder.substring(0, nameBuilder.length() - 2);
+            
+            System.out.println("Hello, " + finalNames + "!");
         }
     }
 }
